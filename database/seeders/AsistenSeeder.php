@@ -14,6 +14,8 @@ class AsistenSeeder extends Seeder
      */
     public function run()
     {
-        Asisten::create(['']);
+        Asisten::create(['npm'=>'14.02.8845', 'nama_asisten'=>'Denni Septiono', 'phone'=>'']);
+        Asisten::create(['npm'=>'14.12.8270', 'nama_asisten'=>'Defri Anshory', 'phone'=>'']);
+        Asisten::create(['npm'=>'14.12.8280', 'nama_asisten'=>'Galang Adi Puranto', 'phone'=>'']);
     }
 }

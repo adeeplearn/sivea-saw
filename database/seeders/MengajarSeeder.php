@@ -13,6 +13,6 @@ class MengajarSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

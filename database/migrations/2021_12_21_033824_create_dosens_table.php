@@ -18,7 +18,7 @@ class CreateDosensTable extends Migration
             $table->string('nik', 10)->unique();
             $table->string('nama_dosen', 100);
             $table->enum('jk', ['L','P']);
-            $table->string('email')->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('phone', 15)->nullable();
             $table->timestamps();
         });
