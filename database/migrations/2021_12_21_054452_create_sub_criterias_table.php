@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateSubCriteriasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('subcriterias', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('criteria_id')
+                ->constrained('criteriaweights')
+                ->cascadeOnDelete();
+            $table->text('poin_penilaian');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('subcriterias', function (Blueprint $table) {
+            $table->dropForeign('criteria_id');
+            $table->dropColumn('criteria_id');
+        });
+        Schema::dropIfExists('subcriterias');
+    }
+}
