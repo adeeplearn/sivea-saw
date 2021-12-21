@@ -26,4 +26,8 @@ class CriteriaRating extends Model
         'rating',
         'description',
     ];
+
+    public function criteria(){
+        return $this->hasMany(CriteriaWeight::class);
+    }
 }

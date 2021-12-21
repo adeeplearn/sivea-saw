@@ -31,4 +31,8 @@ class CriteriaWeight extends Model
     public function subcriteria(){
         return $this->belongsTo(SubCriteria::class);
     }
+
+    public function criteriarating(){
+        return $this->belongsTo(CriteriaRating::class);
+    }
 }

@@ -20,14 +20,14 @@ class AlternativeController extends Controller
         $scores = AlternativeScore::select(
             'alternativescores.id as id',
             'alternatives.id as ida',
-            'criteriaweights.id as idw',
+//            'criteriaweights.id as idw',
             'criteriaratings.id as idr',
             'alternatives.name as name',
-            'criteriaweights.name as criteria',
+//            'criteriaweights.name as criteria',
             'criteriaratings.rating as rating',
             'criteriaratings.description as description')
         ->leftJoin('alternatives', 'alternatives.id', '=', 'alternativescores.alternative_id')
-        ->leftJoin('criteriaweights', 'criteriaweights.id', '=', 'alternativescores.criteria_id')
+//        ->leftJoin('criteriaweights', 'criteriaweights.id', '=', 'alternativescores.criteria_id')
         ->leftJoin('criteriaratings', 'criteriaratings.id', '=', 'alternativescores.rating_id')
         ->get();
 
