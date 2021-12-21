@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 <a href="{{url('/')}}" class="brand-link">
-      <img src="{{asset('assets/img/d.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">DSS</span>
+      <img src="{{asset('assets/img/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">SIVEA</span>
     </a>
 
     <!-- Sidebar -->
@@ -31,6 +31,21 @@
               </p>
             </a>
           </li>
+            <li class="nav-item">
+                <a href="{{url('prodis')}}" class="nav-link">
+                    <i class="nav-icon fas fa-graduation-cap"></i>
+                    <p>
+                        Program Studi
+                    </p>
+                </a>
+            </li><li class="nav-item">
+                <a href="{{url('matakuliahs')}}" class="nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>
+                        Mata Kuliah
+                    </p>
+                </a>
+            </li>
           <li class="nav-item">
             <a href="{{url('criteriaweights')}}" class="nav-link">
               <i class="nav-icon fas fa-cube"></i>

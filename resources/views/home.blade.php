@@ -26,20 +26,31 @@
                     <div class="card">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Welcome to Decision Support System :)</h3>
+                                <h3 class="card-title">Selamat Datang di SIVEA Forum Asisten Universitas Amikom Yogyakarta</h3>
                             </div>
                         </div>
                         <div class="card-body">
-                            This system can help someone to make decisions using Simple Additive Weighting Algorithm.
-                            <br> How to use:
-                            <ol>
-                                <li>Go to the Criteria & Weight menu to add decision criteria and its weight (the
-                                    importance of criteria).</li>
-                                <li>Then go to the Criteria Rating menu to give rating option for each criterion.</li>
-                                <li>Use the Alternative menu to add alternative (candidate) and its rating.</li>
-                                <li>Check the Rank menu to view the result, click the Total column on the table to sort
-                                    it by its total value.</li>
-                            </ol>
+                            <div class="alert alert-info">
+                                <strong>Apakah SIVEA ? </strong> <br>
+                                <p>
+                                    Sistem Evaluasi Asisten, instrumen untuk menilai kinerja asisten dalam proses pembelajaran di akhir semester.
+
+                                </p>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Apakah SIVEA Tetap Anonim ?</strong> <br>
+                                <p>
+                                    Tentu saja, Kerahasiaan identitas penilai kami jaga. Oleh karena itu berikan penilaian yang sejujurnya.
+                                </p>
+
+                            </div>
+                            <div class="alert alert-danger">
+                                <strong>Mengapa Mengisi SIVEA ?</strong> <br>
+                                <p>
+                                    Dengan mengisi SIVEA berarti Bapak dan Ibu Dosen telah berpartisipasi untuk membantu meningkatkan mutu asistensi.
+                                    SIVEA bermanfaat bagi asisten untuk memperbaiki diri bila memang masih terdapat kekurangan serta mengembangkan potensi dan kelebihan yang dimilikinya.
+                                </p>
+                            <div>
                         </div>
                     </div>
                     <!-- /.card -->

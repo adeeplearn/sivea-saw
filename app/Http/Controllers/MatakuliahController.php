@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matakuliah;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MatakuliahController extends Controller
@@ -14,7 +15,9 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        //
+        $matakuliahs = Matakuliah::leftJoin('prodi', 'matakuliah.prodi_id', '=', 'prodi.id')
+            ->select('matakuliah.id','matakuliah.alias as kode_mk','matakuliah.nama_matakuliah as nama','matakuliah.sks', 'prodi.alias as prodi')->get();
+        return view('matakuliah.index', compact('matakuliahs'))->with('i',0);
     }
 
     /**
@@ -24,7 +27,8 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        //
+        $prodis = Prodi::select('nama_prodi')->get();
+        return view('matakuliah.create', compact('prodis'));
     }
 
     /**

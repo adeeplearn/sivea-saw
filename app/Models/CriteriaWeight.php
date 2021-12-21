@@ -27,4 +27,8 @@ class CriteriaWeight extends Model
         'weight',
         'description',
     ];
+
+    public function subcriteria(){
+        return $this->belongsTo(SubCriteria::class);
+    }
 }

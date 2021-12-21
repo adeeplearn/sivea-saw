@@ -44,7 +44,6 @@
                                         <th>Name</th>
                                         <th>Type</th>
                                         <th>Weight</th>
-                                        <th>Description</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -55,7 +54,7 @@
                                         <td>{{ $c->name}}</td>
                                         <td>{{ $c->type}}</td>
                                         <td>{{ $c->weight}}</td>
-                                        <td>{{ $c->description}}</td>
+
                                         <td>
                                             <form action="{{ route('criteriaweights.destroy',$c->id) }}" method="POST">
                                                 @csrf

@@ -14,7 +14,8 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        //
+        $prodis = Prodi::get();
+        return view('prodi.index', compact('prodis'))->with('i',0);
     }
 
     /**
@@ -24,7 +25,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        //
+        return view('prodi.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode' => 'required|numeric|max:100',
+            'nama_prodi' => 'required|max:255',
+            'jenjang' => 'required | max:2',
+            'alias' => 'required|max:255',
+        ]);
+
+        Prodi::create($request->all());
+
+        return redirect()->route('prodis.index')
+            ->with('success','Prodi created successfully.');
     }
 
     /**
@@ -57,7 +68,7 @@ class ProdiController extends Controller
      */
     public function edit(Prodi $prodi)
     {
-        //
+        return view('prodi.edit',compact('prodi'));
     }
 
     /**
@@ -69,7 +80,17 @@ class ProdiController extends Controller
      */
     public function update(Request $request, Prodi $prodi)
     {
-        //
+        $request->validate([
+            'kode' => 'required|numeric|max:100',
+            'nama_prodi' => 'required|max:255',
+            'jenjang' => 'required | max:2',
+            'alias' => 'required|max:255',
+        ]);
+
+        $prodi->update($request->all());
+
+        return redirect()->route('prodis.index')
+            ->with('success','Prodi updated successfully');
     }
 
     /**
@@ -80,6 +101,7 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi->delete();
+        return redirect()->route('prodis.index')->with('success', 'Data prodi'.$prodi->nama_prodi.' berhasil dihapus');
     }
 }
