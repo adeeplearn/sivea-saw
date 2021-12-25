@@ -13,6 +13,6 @@ class SubCriteria extends Model
     protected $fillable = ['criteria_id', 'poin_penilaian'];
 
     public function criteria(){
-        return $this->hasMany(CriteriaWeight::class);
+        return $this->belongsTo(CriteriaWeight::class, 'criteria_id');
     }
 }

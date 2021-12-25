@@ -15,7 +15,10 @@ class CreateSubCriteriasTable extends Migration
     {
         Schema::create('subcriterias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('criteria_id')
+//            $table->foreignId('kriteria_id')
+//                ->constrained('kriteria')
+//                ->cascadeOnDelete();
+            $table->foreignId('criteria_weight_id')
                 ->constrained('criteriaweights')
                 ->cascadeOnDelete();
             $table->text('poin_penilaian');

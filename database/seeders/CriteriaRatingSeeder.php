@@ -15,35 +15,35 @@ class CriteriaRatingSeeder extends Seeder
      */
     public function run()
     {
-        CriteriaWeight::where('name','Microteach')->first()->subcriteria()->saveMany([
+        CriteriaWeight::where('name','Microteach')->first()->criteriarating()->saveMany([
             new CriteriaRating(['rating'=>'0.2','description'=>'Kurang Baik']),
             new CriteriaRating(['rating'=>'0.4','description'=>'Cukup Baik']),
             new CriteriaRating(['rating'=>'0.6','description'=>'Baik']),
             new CriteriaRating(['rating'=>'0.8','description'=>'Sangat Baik']),
             new CriteriaRating(['rating'=>'1','description'=>'Memuaskan']),
         ]);
-        CriteriaWeight::where('name','Perilaku')->first()->subcriteria()->saveMany([
+        CriteriaWeight::where('name','Perilaku')->first()->criteriarating()->saveMany([
             new CriteriaRating(['rating'=>'0.2','description'=>'Kurang Baik']),
             new CriteriaRating(['rating'=>'0.4','description'=>'Cukup Baik']),
             new CriteriaRating(['rating'=>'0.6','description'=>'Baik']),
             new CriteriaRating(['rating'=>'0.8','description'=>'Sangat Baik']),
             new CriteriaRating(['rating'=>'1','description'=>'Memuaskan']),
         ]);
-        CriteriaWeight::where('name','Kedisiplinan')->first()->subcriteria()->saveMany([
+        CriteriaWeight::where('name','Kedisiplinan')->first()->criteriarating()->saveMany([
             new CriteriaRating(['rating'=>'0.2','description'=>'Kurang Baik']),
             new CriteriaRating(['rating'=>'0.4','description'=>'Cukup Baik']),
             new CriteriaRating(['rating'=>'0.6','description'=>'Baik']),
             new CriteriaRating(['rating'=>'0.8','description'=>'Sangat Baik']),
             new CriteriaRating(['rating'=>'1','description'=>'Memuaskan']),
         ]);
-        CriteriaWeight::where('name','Keahlian')->first()->subcriteria()->saveMany([
+        CriteriaWeight::where('name','Keahlian')->first()->criteriarating()->saveMany([
             new CriteriaRating(['rating'=>'0.2','description'=>'Kurang Baik']),
             new CriteriaRating(['rating'=>'0.4','description'=>'Cukup Baik']),
             new CriteriaRating(['rating'=>'0.6','description'=>'Baik']),
             new CriteriaRating(['rating'=>'0.8','description'=>'Sangat Baik']),
             new CriteriaRating(['rating'=>'1','description'=>'Memuaskan']),
         ]);
-        CriteriaWeight::where('name','Rekomendasi')->first()->subcriteria()->saveMany([
+        CriteriaWeight::where('name','Rekomendasi')->first()->criteriarating()->saveMany([
             new CriteriaRating(['rating'=>'0.2','description'=>'Tidak']),
             new CriteriaRating(['rating'=>'0.6','description'=>'Ya']),
         ]);

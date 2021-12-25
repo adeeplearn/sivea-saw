@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CriteriaWeight;
+use App\Models\Kriteria;
 use App\Models\SubCriteria;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +18,7 @@ class SubCriteriaSeeder extends Seeder
     {
         CriteriaWeight::where('name','Microteach')->first()->subcriteria()->saveMany([
             new SubCriteria(['poin_penilaian'=>'Menilai kemampuan presentasi dan memberi penjelasan']),
-            new SubCriteria(['poin_penilaian'=>'Menilai penguasaan materi praktikum']),
+            new SubCriteria(['poin_penilaian'=>'Menilai penguasaan materi praktikum'])
         ]);
         CriteriaWeight::where('name','Perilaku')->first()->subcriteria()->saveMany([
             new SubCriteria(['poin_penilaian'=>'Menilai kerapian penampilan asisten praktikum']),
@@ -34,5 +35,24 @@ class SubCriteriaSeeder extends Seeder
         CriteriaWeight::where('name','Rekomendasi')->first()->subcriteria()->saveMany([
             new SubCriteria(['poin_penilaian'=>'Rekomendasi asisten terbaik']),
         ]);
+//        Kriteria::where('name','Microteach')->first()->subcriteria()->saveMany([
+//            new SubCriteria(['poin_penilaian'=>'Menilai kemampuan presentasi dan memberi penjelasan']),
+//            new SubCriteria(['poin_penilaian'=>'Menilai penguasaan materi praktikum'])
+//        ]);
+//        Kriteria::where('name','Perilaku')->first()->subcriteria()->saveMany([
+//            new SubCriteria(['poin_penilaian'=>'Menilai kerapian penampilan asisten praktikum']),
+//            new SubCriteria(['poin_penilaian'=>'Menilai sikap asisten terhadap dosen dan mahasiswa/praktikan']),
+//        ]);
+//        Kriteria::where('name','Kedisiplinan')->first()->subcriteria()->saveMany([
+//            new SubCriteria(['poin_penilaian'=>'Respon ketepatan waktu asisten serta kehadiran sesuai jadwal']),
+//            new SubCriteria(['poin_penilaian'=>'Ketaatan sesuai peraturan asisten yang berlaku']),
+//        ]);
+//        Kriteria::where('name','Keahlian')->first()->subcriteria()->saveMany([
+//            new SubCriteria(['poin_penilaian'=>'Mengoperasikan properti lab praktikum dengan baik']),
+//            new SubCriteria(['poin_penilaian'=>'Keaktifan asisten serta kontribusi yang diberikan']),
+//        ]);
+//        Kriteria::where('name','Rekomendasi')->first()->subcriteria()->saveMany([
+//            new SubCriteria(['poin_penilaian'=>'Rekomendasi asisten terbaik']),
+//        ]);
     }
 }
