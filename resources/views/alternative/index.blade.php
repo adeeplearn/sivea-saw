@@ -29,13 +29,12 @@
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ $message }}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                              </div>
+                            </div>
                             @endif
 
-                            <a href="{{route('alternatives.create')}}" class='btn btn-primary'> <span
-                                    class='fa fa-plus'></span> Add Alternative</a>
+                            <a href="{{route('alternatives.create')}}" class='btn btn-primary'> <span class='fa fa-plus'></span> Add Alternative</a>
                             <br>
                             <table id="mytable" class="display nowrap table table-striped table-bordered">
                                 <thead>
@@ -64,8 +63,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <span data-toggle="tooltip" data-placement="bottom" title="Edit Data">
-                                                    <a href="{{ route('alternatives.edit',$a->id) }}"
-                                                        class="btn btn-primary"><span class="fa fa-edit"></span>
+                                                    <a href="{{ route('alternatives.edit',$a->id) }}" class="btn btn-primary"><span class="fa fa-edit"></span>
                                                     </a>
                                                 </span>
                                                 <span data-toggle="tooltip" data-placement="bottom" title="Delete Data">
@@ -75,6 +73,41 @@
                                                 </span>
                                             </form>
                                         </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col-md-6 -->
+
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="mytable" class="display nowrap table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Matakuliah</th>
+                                        <th>NIM</th>
+                                        <th>Nama Asisten</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($mengajar as $m)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $m->nama_matakuliah}}</td>
+                                        <td>{{ $m->npm}}</td>
+                                        <td>{{ $m->nama_asisten}}</td>
+                                        <td>Nilai</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -98,7 +131,7 @@
 
 @section('script')
 <script>
-    $(function () {
+    $(function() {
         $('[data-toggle="tooltip"]').tooltip()
 
         $('#mytable').DataTable({
@@ -111,6 +144,5 @@
             "responsive": true,
         });
     });
-
 </script>
 @endsection

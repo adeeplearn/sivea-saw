@@ -6,7 +6,9 @@ use App\Models\Alternative;
 use App\Models\AlternativeScore;
 use App\Models\CriteriaWeight;
 use App\Models\CriteriaRating;
+use App\Models\Mengajar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlternativeController extends Controller
 {
@@ -20,21 +22,43 @@ class AlternativeController extends Controller
         $scores = AlternativeScore::select(
             'alternativescores.id as id',
             'alternatives.id as ida',
-//            'criteriaweights.id as idw',
+            //            'criteriaweights.id as idw',
             'criteriaratings.id as idr',
             'alternatives.name as name',
-//            'criteriaweights.name as criteria',
+            //            'criteriaweights.name as criteria',
             'criteriaratings.rating as rating',
-            'criteriaratings.description as description')
-        ->leftJoin('alternatives', 'alternatives.id', '=', 'alternativescores.alternative_id')
-//        ->leftJoin('criteriaweights', 'criteriaweights.id', '=', 'alternativescores.criteria_id')
-        ->leftJoin('criteriaratings', 'criteriaratings.id', '=', 'alternativescores.rating_id')
-        ->get();
+            'criteriaratings.description as description'
+        )
+            ->leftJoin('alternatives', 'alternatives.id', '=', 'alternativescores.alternative_id')
+            //        ->leftJoin('criteriaweights', 'criteriaweights.id', '=', 'alternativescores.criteria_id')
+            ->leftJoin('criteriaratings', 'criteriaratings.id', '=', 'alternativescores.rating_id')
+            ->get();
 
         $alternatives = Alternative::get();
 
+        $mengajar = DB::table('mengajar')
+            ->leftJoin('dosen', 'dosen.id', '=', 'mengajar.dosen_id')
+            ->leftJoin('matakuliah', 'matakuliah.id', '=', 'mengajar.matakuliah_id')
+            ->leftJoin('asisten_matakuliah', 'asisten_matakuliah.mengajar_id', '=', 'mengajar.id')
+            ->leftJoin('asisten', 'asisten.id', '=', 'asisten_matakuliah.asisten_id')->get();
+
+        // $mengajarCol = Mengajar::where('dosen_id', 4)->with(['matakuliah', 'asisten'])->get();
+        // foreach ($mengajarCol as $mengajar) {
+        //     /** @var \App\Models\Mengajar $item */
+        //     dump($mengajar->matakuliah->nama_matakuliah);
+
+        //     foreach ($mengajar->asisten as $asisten) {
+        //         dump($asisten->nama_asisten);
+        //     }
+        // }
+
+
+        // foreach ($mengajar as $m) {
+        //     dump($m->matakuliah->nama_matakuliah)
+        // }
+
         $criteriaweights = CriteriaWeight::get();
-        return view('alternative.index', compact('scores', 'alternatives', 'criteriaweights'))->with('i', 0);
+        return view('alternative.index', compact('scores', 'alternatives', 'criteriaweights', 'mengajar'))->with('i', 0);
     }
 
     /**

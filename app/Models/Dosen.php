@@ -11,14 +11,15 @@ class Dosen extends Model
     use HasFactory;
 
     protected $table = 'dosen';
-    protected $fillable = ['nik','nama_dosen','jk','email','phone'];
+    protected $fillable = ['nik', 'nama_dosen', 'jk', 'email', 'phone'];
 
-    public function kritik(){
+    public function kritik()
+    {
         return $this->hasOne(Kritik::class);
     }
 
-    public function mengajar(){
-        return $this->belongsTo(Mengajar::class);
+    public function mengajar()
+    {
+        return $this->hasMany(Mengajar::class);
     }
-
 }

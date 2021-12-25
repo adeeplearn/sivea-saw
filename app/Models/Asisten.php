@@ -11,9 +11,14 @@ class Asisten extends Model
     use HasFactory;
 
     protected $table = 'asisten';
-    protected $fillable = ['npm','nama_asisten','phone'];
+    protected $fillable = ['npm', 'nama_asisten', 'phone'];
 
-    public function asisten_matakuliah(){
-        return $this->belongsTo(AsistenMatakuliah::class);
+    // public function asisten_matakuliah(){
+    //     return $this->belongsTo(AsistenMatakuliah::class);
+    // }
+
+    public function mengajar()
+    {
+        return $this->belongsToMany(Mengajar::class);
     }
 }

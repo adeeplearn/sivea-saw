@@ -28,11 +28,13 @@ class CriteriaWeight extends Model
         'description',
     ];
 
-    public function subcriteria(){
-        return $this->hasMany(SubCriteria::class, 'criteria_id');
+    public function subcriteria()
+    {
+        return $this->hasMany(SubCriteria::class);
     }
 
-    public function criteriarating(){
+    public function criteriarating()
+    {
         return $this->hasMany(CriteriaRating::class, 'criteria_id');
     }
 }

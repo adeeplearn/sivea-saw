@@ -13,14 +13,22 @@ class Mengajar extends Model
 
     protected $fillable = ['dosen_id', 'matakuliah_id', 'tahun', 'semester'];
 
-    public function dosen(){
-        return $this->hasMany(Dosen::class);
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
     }
-    public function matakuliah(){
-        return $this->hasMany(Matakuliah::class);
+    public function matakuliah()
+    {
+        return $this->belongsTo(Matakuliah::class);
     }
 
-    public function asisten_matakuliah(){
-        return $this->belongsTo(AsistenMatakuliah::class);
+    // public function asisten_matakuliah()
+    // {
+    //     return $this->belongsTo(AsistenMatakuliah::class);
+    // }
+
+    public function asisten()
+    {
+        return $this->belongsToMany(Asisten::class, 'asisten_matakuliah');
     }
 }
