@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             AsistenSeeder::class,
             CriteriaWeightSeeder::class,
             SubCriteriaSeeder::class,
-//            CriteriaRatingSeeder::class,
+            CriteriaRatingSeeder::class,
         ]);
     }
 }

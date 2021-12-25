@@ -17,6 +17,9 @@ class CreateCriteriaratingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('criteria_id');
             $table->foreign('criteria_id')->references('id')->on('criteriaweights');
+//            $table->foreignId('criteria_weight_id')
+//                ->constrained('criteriaweights')
+//                ->cascadeOnDelete();
             $table->float('rating');
             $table->string('description', 100);
             $table->timestamps();
