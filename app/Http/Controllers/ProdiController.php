@@ -42,11 +42,14 @@ class ProdiController extends Controller
             'jenjang' => 'required | max:2',
             'alias' => 'required|max:255',
         ]);
-
-        Prodi::create($request->all());
-
-        return redirect()->route('prodis.index')
-            ->with('success','Prodi created successfully.');
+        $prodi = Prodi::where('kode', '=', $request->kode)->first();
+        if (isset($prodi)){
+            return redirect()->route('prodis.index')->with('failed', 'Prodi already exists!');
+        }else{
+            Prodi::create($request->all());
+            return redirect()->route('prodis.index')
+                ->with('success','Prodi created successfully.');
+        }
     }
 
     /**
@@ -102,6 +105,6 @@ class ProdiController extends Controller
     public function destroy(Prodi $prodi)
     {
         $prodi->delete();
-        return redirect()->route('prodis.index')->with('success', 'Data prodi'.$prodi->nama_prodi.' berhasil dihapus');
+        return redirect()->route('prodis.index')->with('success', 'Data prodi '.$prodi->nama_prodi.' berhasil dihapus');
     }
 }

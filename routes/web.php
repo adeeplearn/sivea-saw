@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\SubCriteriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\CriteriaRatingController;
@@ -28,11 +29,12 @@ use App\Models\CriteriaWeight;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::resources([
-  'alternatives' => AlternativeController::class,
-  'criteriaratings' => CriteriaRatingController::class,
-  'criteriaweights' => CriteriaWeightController::class,
-  'prodis' => ProdiController::class,
-  'matakuliahs' => MatakuliahController::class
+    'alternatives' => AlternativeController::class,
+    'prodis' => ProdiController::class,
+    'matakuliahs' => MatakuliahController::class,
+    'criteriaratings' => CriteriaRatingController::class,
+    'criteriaweights' => CriteriaWeightController::class,
+    'subcriterias'=> SubCriteriaController::class
 ]);
 
 Route::get('home', [HomeController::class, 'index']);

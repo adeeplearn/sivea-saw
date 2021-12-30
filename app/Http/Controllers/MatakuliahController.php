@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MatakuliahRequest;
 use App\Models\Matakuliah;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class MatakuliahController extends Controller
 {
@@ -27,7 +29,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        $prodis = Prodi::select('nama_prodi')->get();
+        $prodis = Prodi::select('id','kode','nama_prodi','jenjang')->get();
         return view('matakuliah.create', compact('prodis'));
     }
 
@@ -39,7 +41,20 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+                'prodi_id'=>'required',
+                'alias'=>'required|max:5',
+                'nama_matakuliah'=>'required|max:255',
+                'sks'=>'nullable',
+            ]);
+        $alias = Matakuliah::where('alias', '=', $request->alias)->first();
+        if(isset($alias)){
+            return redirect()->route('matakuliahs.index')->with('failed','Matakuliah already exists!');
+        }
+        else {
+            Matakuliah::create($request->all());
+            return redirect()->route('matakuliahs.index')->with('success', 'Matakuliah created successfully');
+        }
     }
 
     /**
@@ -61,7 +76,7 @@ class MatakuliahController extends Controller
      */
     public function edit(Matakuliah $matakuliah)
     {
-        //
+        return view('matakuliah.edit', compact('matakuliah'));
     }
 
     /**
@@ -73,7 +88,17 @@ class MatakuliahController extends Controller
      */
     public function update(Request $request, Matakuliah $matakuliah)
     {
-        //
+        $request->validate(
+            [
+                'alias'=>'required|max:5',
+                'nama_matakuliah'=>'required|max:255',
+                'sks'=>'nullable',
+            ]
+        );
+        $matakuliah->update($request->all());
+        return redirect()->route('matakuliahs.index')
+                        ->with('success', 'Matakuliah updated successfully');
+
     }
 
     /**
@@ -84,6 +109,7 @@ class MatakuliahController extends Controller
      */
     public function destroy(Matakuliah $matakuliah)
     {
-        //
+        $matakuliah->delete();
+        return redirect()->route('matakuliahs.index')->with('success', 'Matakuliah deleted successfully');
     }
 }
