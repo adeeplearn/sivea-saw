@@ -5,6 +5,7 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\SubCriteriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlternativeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CriteriaRatingController;
 use App\Http\Controllers\CriteriaWeightController;
 use App\Http\Controllers\DataContoller;
@@ -26,26 +27,34 @@ use App\Models\CriteriaWeight;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::prefix('auth')->group(function () {
+    Route::get('login', [AuthController::class, 'index'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
-Route::resources([
-    'alternatives' => AlternativeController::class,
-    'prodis' => ProdiController::class,
-    'matakuliahs' => MatakuliahController::class,
-    'criteriaratings' => CriteriaRatingController::class,
-    'criteriaweights' => CriteriaWeightController::class,
-    'subcriterias'=> SubCriteriaController::class
-]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [HomeController::class, 'index']);
 
-Route::get('home', [HomeController::class, 'index']);
+    Route::resources([
+        'alternatives' => AlternativeController::class,
+        'prodis' => ProdiController::class,
+        'matakuliahs' => MatakuliahController::class,
+        'criteriaratings' => CriteriaRatingController::class,
+        'criteriaweights' => CriteriaWeightController::class,
+        'subcriterias' => SubCriteriaController::class
+    ]);
 
-Route::get('decision', [DecisionController::class, 'index']);
+    Route::get('home', [HomeController::class, 'index']);
 
-Route::get('normalization', [NormalizationController::class, 'index']);
+    Route::get('decision', [DecisionController::class, 'index']);
 
-Route::get('rank', [RankController::class, 'index']);
+    Route::get('normalization', [NormalizationController::class, 'index']);
 
-Route::prefix('data')->group(function () {
-  Route::get('/', [DataContoller::class, 'index'])->name('data.index');
-  Route::post('import', [DataContoller::class, 'import'])->name('data.import');
+    Route::get('rank', [RankController::class, 'index']);
+
+    Route::prefix('data')->group(function () {
+        Route::get('/', [DataContoller::class, 'index'])->name('data.index');
+        Route::post('import', [DataContoller::class, 'import'])->name('data.import');
+    });
 });
