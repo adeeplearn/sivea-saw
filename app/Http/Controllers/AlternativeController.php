@@ -95,7 +95,7 @@ class AlternativeController extends Controller
         foreach ($criteriaweight as $cw) {
             $score = new AlternativeScore();
             $score->alternative_id = $alt->id;
-            $score->criteria_id = $cw->id;
+//            $score->criteria_id = $cw->id;
             $score->rating_id = $request->input('criteria')[$cw->id];
             $score->save();
         }
