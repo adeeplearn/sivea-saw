@@ -78,31 +78,48 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">Result</li>
-          <li class="nav-item">
-          <a href="{{url('decision')}}" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-              <p>
-                Decision Matrix
-            </p>
-            </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{url('normalization')}}" class="nav-link">
-              <i class="nav-icon far fa-chart-bar"></i>
-              <p>
-                Normalization
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{url('rank')}}" class="nav-link">
-              <i class="nav-icon fas fa-chart-line"></i>
-              <p>
-                Rank
-              </p>
-            </a>
-          </li>
+            <li class="nav-item">
+                <a href="{{url('polling')}}" class="nav-link">
+                    <i class="nav-icon fas fa-poll"></i>
+                    <p>
+                        Polling
+                    </p>
+                </a>
+            </li>
+          <li class="nav-header">Import</li>
+            <li class="nav-item">
+                <a href="{{url('data')}}" class="nav-link">
+                    <i class="nav-icon fas fa-file-import"></i>
+                    <p>
+                        Data Import
+                    </p>
+                </a>
+            </li>
+{{--          <li class="nav-header">Result</li>--}}
+{{--          <li class="nav-item">--}}
+{{--          <a href="{{url('decision')}}" class="nav-link">--}}
+{{--                <i class="nav-icon fas fa-table"></i>--}}
+{{--              <p>--}}
+{{--                Decision Matrix--}}
+{{--            </p>--}}
+{{--            </a>--}}
+{{--          </li>--}}
+{{--          <li class="nav-item">--}}
+{{--          <a href="{{url('normalization')}}" class="nav-link">--}}
+{{--              <i class="nav-icon far fa-chart-bar"></i>--}}
+{{--              <p>--}}
+{{--                Normalization--}}
+{{--              </p>--}}
+{{--            </a>--}}
+{{--          </li>--}}
+{{--          <li class="nav-item">--}}
+{{--          <a href="{{url('rank')}}" class="nav-link">--}}
+{{--              <i class="nav-icon fas fa-chart-line"></i>--}}
+{{--              <p>--}}
+{{--                Rank--}}
+{{--              </p>--}}
+{{--            </a>--}}
+{{--          </li>--}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
