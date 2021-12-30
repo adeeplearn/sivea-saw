@@ -50,15 +50,23 @@
             <a href="{{url('criteriaweights')}}" class="nav-link">
               <i class="nav-icon fas fa-cube"></i>
               <p>
-                Criteria & Weight
+                Kriteria
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{url('subcriterias')}}" class="nav-link">
+                  <i class="nav-icon fas fa-dice"></i>
+                  <p>
+                      Sub Kriteria
+                  </p>
+              </a>
           </li>
           <li class="nav-item">
           <a href="{{url('criteriaratings')}}" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
               <p>
-                Criteria Rating
+                Rating Kriteria
               </p>
             </a>
           </li>

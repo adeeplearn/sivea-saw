@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Mata Kuliah</h1>
+                        <h1 class="m-0">Sub Kriteria</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
 
@@ -32,43 +32,40 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                @elseif($message = Session::get('failed'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ $message }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                                    @elseif ($message = Session::get('failed'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                 @endif
 
-                                <a href="{{route('matakuliahs.create')}}" class='btn btn-primary'> <span
-                                        class='fa fa-plus'></span> Add MataKuliah</a>
+                                <a href="{{route('subcriterias.create')}}" class='btn btn-primary'> <span
+                                        class='fa fa-plus'></span> Add SubCriteria Rating</a>
                                 <br>
                                 <table id="mytable" class="display nowrap table table-striped table-bordered">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kode</th>
-                                        <th>Mata Kuliah</th>
-                                        <th>Sks</th>
-                                        <th>Prodi</th>
+                                        <th>Criteria</th>
+                                        <th>Poin Penilaian</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($matakuliahs as $matkul)
+
+                                    @foreach ($subcriterias as $subcriteria)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $matkul->kode_mk}}</td>
-                                            <td>{{ $matkul->nama}}</td>
-                                            <td>{{ $matkul->sks}}</td>
-                                            <td>{{ $matkul->prodi}}</td>
+                                            <td>{{ $subcriteria->cname}}</td>
+                                            <td>{{ $subcriteria->pp}}</td>
                                             <td>
-                                                <form action="{{ route('matakuliahs.destroy',$matkul->id) }}" method="POST">
+                                                <form action="{{ route('subcriterias.destroy',$subcriteria->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <span data-toggle="tooltip" data-placement="bottom" title="Edit Data">
-                                                    <a href="{{ route('matakuliahs.edit',$matkul->id) }}"
+                                                    <a href="{{ route('subcriterias.edit',$subcriteria->id) }}"
                                                        class="btn btn-primary"><span class="fa fa-edit"></span>
                                                     </a>
                                                 </span>
