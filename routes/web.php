@@ -33,8 +33,6 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::get('/', [HomeController::class, 'index']);
-
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -54,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('polling')->group(function(){
         Route::get('/', [PollingController::class, 'index']);
         Route::get('listasisten', [PollingController::class, 'listasisten']);
-        Route::get('isi/{id}', [PollingController::class, 'index']);
+        Route::get('isi', [PollingController::class, 'isi']);
     });
 
     Route::prefix('data')->group(function () {
@@ -63,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('dashboard', [DashboardController::class, 'index']);
+
+    Route::get('home', [HomeController::class, 'index']);
 
     Route::get('decision', [DecisionController::class, 'index']);
 

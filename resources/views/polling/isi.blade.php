@@ -1,240 +1,462 @@
 @extends('template.index')
 @section('content')
-    <div class="main-panel">
-        <div class="col-lg-12 grid-margin stretch-card card">
-            <div class="card-body">
-                <h4 class="card-title">Edom (Evaluasi Dosen Mengajar) Akhir Semester</h4>
-                <p class="card-description">
-                    Silahkan isi semua evaluasi dibawah ini
-                </p>
-                <div class="alert alert-info">
-                    <strong>Perhatian!</strong> <br/>
-                    <font size="2"> Jika Status sudah <button type="button" class="btn btn-info mdi mdi-check"></button> klik tombol selesai
-                        <br/><br/>
-                        <form class="forms-sample" method="POST" action="https://sidomba.umpp.ac.id/angket/selesai">
-                            <input type="hidden" name="evaluasi" value="angketakhir" readonly>
-                            <input type="submit" class="btn btn-success mr-2" value="Klik Selesai disini" disabled>
-                        </form>
-                    </font>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th style="width:10px;">Status </th>
-                            <th style="width:10px;">No</th>
-                            <th>Nama Dosen </th>
-                            <th>Matakuliah </th>
-                            <th>Kelas </th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-info mdi mdi-check"></button></td>
-                            <td class="py-1">1</td>
-                            <td>Risdiani</td>
-                            <td>Agama</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-info mdi mdi-check"></button></td>
-                            <td class="py-1">2</td>
-                            <td>Mujianto </td>
-                            <td>Pancasila</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-info mdi mdi-check"></button></td>
-                            <td class="py-1">3</td>
-                            <td>R. Kurniawan Dwi<br/>Septiady</td>
-                            <td>Pancasila</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-info mdi mdi-check"></button></td>
-                            <td class="py-1">4</td>
-                            <td>Mujianto </td>
-                            <td>Kewarganegaraan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/32bd9f8bdf3b79f7544f574cd42e77e4'">Isi</button></td>
-                            <td class="py-1">5</td>
-                            <td>R. Kurniawan Dwi<br/>Septiady</td>
-                            <td>Kewarganegaraan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/77d3aa79c7c10ed852e2f8075b7d2a7e'">Isi</button></td>
-                            <td class="py-1">6</td>
-                            <td>Trisna Megawaty,<br/>M.Pd</td>
-                            <td>Bahasa Indonesia</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/0b9156421658ef4d47cdf4997a5c7a41'">Isi</button></td>
-                            <td class="py-1">7</td>
-                            <td>TRI SAKTI WIROTOMO</td>
-                            <td>Bahasa Indonesia</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/6728d311ee3817e706e8f9b40808f3a2'">Isi</button></td>
-                            <td class="py-1">8</td>
-                            <td>WINDHA WIDIASTUTI</td>
-                            <td>Patient Safety</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/4ce755e8c65cd0e1120e98215b503f2d'">Isi</button></td>
-                            <td class="py-1">9</td>
-                            <td>ISYTI'AROH</td>
-                            <td>Patient Safety</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/1e2f032843d5f7dca7c29b1e7b883345'">Isi</button></td>
-                            <td class="py-1">10</td>
-                            <td>WINDHA WIDIASTUTI</td>
-                            <td>Psikologi</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/7a43b493871747f98e708ae4a4d3a0f5'">Isi</button></td>
-                            <td class="py-1">11</td>
-                            <td>YUNI SANDRA PRATIWI</td>
-                            <td>Psikologi</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/c01816e6bcb84cc5e44427a549f2a77b'">Isi</button></td>
-                            <td class="py-1">12</td>
-                            <td>WINDHA WIDIASTUTI</td>
-                            <td>Etika Keperawatan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/c010d589d5e08b92cbd3b8227387d43f'">Isi</button></td>
-                            <td class="py-1">13</td>
-                            <td>ISYTI'AROH</td>
-                            <td>Etika Keperawatan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/2f26ddc6e069d5fd61bc463c668c0066'">Isi</button></td>
-                            <td class="py-1">14</td>
-                            <td>TRI SAKTI WIROTOMO</td>
-                            <td>Ilmu Biomedik Dasar</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/641f64e89ddfc3670b9389471d5d0f97'">Isi</button></td>
-                            <td class="py-1">15</td>
-                            <td>FIRMAN FARADISI</td>
-                            <td>Ilmu Biomedik Dasar</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/bfff4d9a7eeeebd7acd5eb89263d0416'">Isi</button></td>
-                            <td class="py-1">16</td>
-                            <td>NURUL AKTIFAH</td>
-                            <td>Ilmu Biomedik Dasar</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/00e4080b9d8521ab52d030fb2d66e69d'">Isi</button></td>
-                            <td class="py-1">17</td>
-                            <td>NUNIEK NIZMAH<br/>FAJRIYAH</td>
-                            <td>Konsep Dasar Keperawatan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="py-1">
-
-                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/a608db4a85b2454d3c25b44e7027eb62'">Isi</button></td>
-                            <td class="py-1">18</td>
-                            <td>FIRMAN FARADISI</td>
-                            <td>Konsep Dasar Keperawatan</td>
-                            <td>10201UP</td>
-
-                        </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+{{--                        <h1 class="m-0">Add new criteria</h1>--}}
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Asisten Yang Dinilai</h2><br>
+{{--{{route('polling.store')}}--}}
+                                <form class="forms-sample" method="POST" action="#">
+                                    @csrf
+                                    <div class="form-group row">
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Nim</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="nim" value="14.12.8270" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Nama Asisten</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="nama_asisten" id="asisten" placeholder="Nama Asisten" value="Defri Anshory" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="makul" class="col-sm-3 col-form-label">Matakuliah</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="nama_matakuliah" id="makul" value="Pemrograman Client Server" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="saran" class="col-sm-3 col-form-label">Saran dan Kritik</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="saran" class="form-control" name="pesan" value="" required placeholder="Silahkan isi saran dan kritik">
+                                        </div>
+                                    </div>
+
+                                    <br/><br/>
+                                    <input type="hidden" class="form-control" name="kdindikatora1" value="A1" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">1. Kemampuan Menjelaskan Pokok Bahasan/ Topic Secara Tepat </label>
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa1" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa1" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora2" value="A2" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">2. Kemampuan Memberi Contoh Yang Relevan Dan Menjawab Pertanyaan Mahasiswa </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa2" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa2" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora3" value="A3" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">3. Penguasaan Akan Isu-isu Mutakhir Dalam Bidang Yang Diajarkan </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa3" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa3" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora4" value="A4" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">4. Mengunakan Hasil-hasil Penelitian Untuk Meningkatkan Kualitas Perkuliahan </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa4" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa4" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora5" value="A5" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">5. Keragaman Cara Pengukuran Hasil Belajar </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa5" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa5" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora6" value="A6" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">6. Kemampuan Menghidupkan Suasana Kelas </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa6" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa6" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora7" value="A7" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">7. Mampu Menjadi Panutan Mahasiswa Termasuk Menjadi Suri Tauladan Dalam Melaksanakan Pembelajaran Sesuai Dengan Al-islam Kemuhammadiyahan </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa7" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa7" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora8" value="A8" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">8. Keteraturan Dan Ketertiban Jadwal Perkuliahan </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa8" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa8" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="hidden" class="form-control" name="kdindikatora9" value="A9" readonly>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">9. Tanggap Terhadap Setiap Tanggapan Dan Pertanyaan Mahasiswa </label>
+
+                                        <label for="exampleInputEmail2" class="col-sm-1 col-form-label"></label>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio"  class="form-check-input" name="radioa9" id="optionsRadios1" value="1" required> Tidak Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="2" required> Kurang Baik                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="3" required> Cukup Baik
+                                            </label>
+                                        </div>
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="4" required> Agak Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="5" required> Baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="6" required> Sangat baik
+                                            </label>
+                                        </div>
+
+                                        <div class="form-radio col-sm-3">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="radioa9" id="optionsRadios1" value="7" required> Memuaskan
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <input type="submit" class="btn btn-success mr-2" value="Simpan">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
 @endsection
