@@ -17,7 +17,11 @@ class AddRolesToUsersTable extends Migration
 //            $table->unsignedBigInteger('dosen_id')->after('id');
 //            $table->foreign('dosen_id')->references('id')->on('dosen');
 //            $table->string('email')->unique()->after('username');
-            $table->enum('role',['admin','penilai'])->after('password');
+            $table->foreignId('dosen_id')
+                ->nullable()
+                ->constrained('dosen')
+                ->cascadeOnDelete();
+            $table->enum('role', ['admin', 'penilai'])->after('password');
         });
     }
 
@@ -29,9 +33,9 @@ class AddRolesToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-//            $table->dropForeign('dosen_id');
-//            $table->dropColumn('dosen_id');
-            $table->dropColumn('email');
+            $table->dropForeign(['dosen_id']);
+            $table->dropColumn('dosen_id');
+            // $table->dropColumn('email');
             $table->dropColumn('role');
         });
     }
