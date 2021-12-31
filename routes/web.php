@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\PollingController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\SubCriteriaController;
 use Illuminate\Support\Facades\Route;
@@ -13,8 +15,6 @@ use App\Http\Controllers\DecisionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NormalizationController;
 use App\Http\Controllers\RankController;
-use App\Models\CriteriaRating;
-use App\Models\CriteriaWeight;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +33,10 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::get('/', [HomeController::class, 'index']);
+
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [HomeController::class, 'index']);
 
     Route::resources([
         'alternatives' => AlternativeController::class,
@@ -45,7 +47,22 @@ Route::group(['middleware' => 'auth'], function () {
         'subcriterias' => SubCriteriaController::class
     ]);
 
-    Route::get('home', [HomeController::class, 'index']);
+    Route::prefix('kritik')->group(function(){
+        Route::get('isi', [\App\Http\Controllers\KritikController::class, 'index'])->name('kritik.isi');
+    });
+
+    Route::prefix('polling')->group(function(){
+        Route::get('/', [PollingController::class, 'index']);
+        Route::get('listasisten', [PollingController::class, 'listasisten']);
+        Route::get('isi/{id}', [PollingController::class, 'index']);
+    });
+
+    Route::prefix('data')->group(function () {
+        Route::get('/', [DataContoller::class, 'index'])->name('data.index');
+        Route::post('import', [DataContoller::class, 'import'])->name('data.import');
+    });
+
+    Route::get('dashboard', [DashboardController::class, 'index']);
 
     Route::get('decision', [DecisionController::class, 'index']);
 
@@ -53,8 +70,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('rank', [RankController::class, 'index']);
 
-    Route::prefix('data')->group(function () {
-        Route::get('/', [DataContoller::class, 'index'])->name('data.index');
-        Route::post('import', [DataContoller::class, 'import'])->name('data.import');
-    });
+
 });

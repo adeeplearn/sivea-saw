@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 <a href="{{url('/')}}" class="brand-link">
-      <img src="{{asset('assets/img/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('assets/img/logo.png')}}" alt="Sivea Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">SIVEA</span>
     </a>
 
@@ -24,10 +24,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="{{url('home')}}" class="nav-link">
-              <i class="nav-icon fas fa-home"></i>
+          <a href="{{url('dashboard')}}" class="nav-link">
+              <i class="nav-icon fas fa-tv"></i>
               <p>
-                Home
+                Dashboard
               </p>
             </a>
           </li>
@@ -79,10 +79,26 @@
             </a>
           </li>
             <li class="nav-item">
-                <a href="{{url('polling')}}" class="nav-link">
+                <a href="{{url('hasil')}}" class="nav-link">
                     <i class="nav-icon fas fa-poll"></i>
                     <p>
-                        Polling
+                        Hasil Polling
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('polling')}}" class="nav-link">
+                    <i class="nav-icon fas fa-pencil-alt"></i>
+                    <p>
+                        Isi Polling Asisten
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('kritik/isi')}}" class="nav-link">
+                    <i class="nav-icon fas fa-pencil-alt"></i>
+                    <p>
+                        Isi Kritik dan Saran FA
                     </p>
                 </a>
             </li>
