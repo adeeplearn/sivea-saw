@@ -66,7 +66,7 @@
                                         </tr>
                                         <tr>
                                             <td class="py-1">
-                                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/32bd9f8bdf3b79f7544f574cd42e77e4'">
+                                                <button type="submit" class="btn btn-success mr-2">
                                                     Isi
                                                 </button>
                                             </td>
@@ -77,7 +77,7 @@
                                         </tr>
                                         <tr>
                                             <td class="py-1">
-                                                <button type="submit" class="btn btn-success mr-2" onclick ="location.href='https://sidomba.umpp.ac.id/angket/isi/32bd9f8bdf3b79f7544f574cd42e77e4'">
+                                                <button type="submit" class="btn btn-success mr-2">
                                                     Isi
                                                 </button>
                                             </td>

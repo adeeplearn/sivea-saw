@@ -23,6 +23,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+            @if(Auth::user()->role == 'admin'))
           <li class="nav-item">
           <a href="{{url('dashboard')}}" class="nav-link">
               <i class="nav-icon fas fa-tv"></i>
@@ -85,7 +86,17 @@
                         Hasil Polling
                     </p>
                 </a>
+            </li><li class="nav-header">Import</li>
+            <li class="nav-item">
+                <a href="{{url('data')}}" class="nav-link">
+                    <i class="nav-icon fas fa-file-import"></i>
+                    <p>
+                        Data Import
+                    </p>
+                </a>
             </li>
+            @endif
+            @if(Auth::user()->role == 'penilai')
             <li class="nav-item">
                 <a href="{{url('polling')}}" class="nav-link">
                     <i class="nav-icon fas fa-pencil-alt"></i>
@@ -102,15 +113,7 @@
                     </p>
                 </a>
             </li>
-          <li class="nav-header">Import</li>
-            <li class="nav-item">
-                <a href="{{url('data')}}" class="nav-link">
-                    <i class="nav-icon fas fa-file-import"></i>
-                    <p>
-                        Data Import
-                    </p>
-                </a>
-            </li>
+            @endif
 {{--          <li class="nav-header">Result</li>--}}
 {{--          <li class="nav-item">--}}
 {{--          <a href="{{url('decision')}}" class="nav-link">--}}
