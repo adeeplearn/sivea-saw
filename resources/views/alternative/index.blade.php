@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Alternative & Score</h1>
+                    <h1 class="m-0">Daftar Hasil Polling Matakuliah</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -25,89 +25,27 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            @if ($message = Session::get('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ $message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            <a href="{{route('alternatives.create')}}" class='btn btn-primary'> <span class='fa fa-plus'></span> Add Alternative</a>
-                            <br>
                             <table id="mytable" class="display nowrap table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        @foreach ($criteriaweights as $c)
-                                        <th>{{$c->name}}</th>
-                                        @endforeach
+                                        <th>Prodi</th>
+                                        <th>Mata Kuliah</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($alternatives as $a)
+                                    @foreach ($matakuliahs as $matkul)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $a->name}}</td>
-                                        @php
-                                        $scr = $scores->where('ida', $a->id)->all();
-                                        @endphp
-                                        @foreach ($scr as $s)
-                                        <td>{{$s->description}}</td>
-                                        @endforeach
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $matkul->prodi->alias}}</td>
+                                        <td>{{ $matkul->nama_matakuliah}}</td>
                                         <td>
-                                            <form action="{{ route('alternatives.destroy',$a->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <span data-toggle="tooltip" data-placement="bottom" title="Edit Data">
-                                                    <a href="{{ route('alternatives.edit',$a->id) }}" class="btn btn-primary"><span class="fa fa-edit"></span>
-                                                    </a>
-                                                </span>
-                                                <span data-toggle="tooltip" data-placement="bottom" title="Delete Data">
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <span class="fa fa-trash-alt"></span>
-                                                    </button>
-                                                </span>
-                                            </form>
+                                            <span data-toggle="tooltip" data-placement="bottom" title="Lihat Data">
+                                                <a href="{{ route('alternatives.show',$matkul->id) }}" class="btn btn-primary"><span class="fa fa-eye"></span>
+                                                </a>
+                                            </span>
                                         </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- /.card -->
-
-                </div>
-                <!-- /.col-md-6 -->
-
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table id="mytable" class="display nowrap table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Matakuliah</th>
-                                        <th>NIM</th>
-                                        <th>Nama Asisten</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($mengajar as $m)
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $m->nama_matakuliah}}</td>
-                                        <td>{{ $m->npm}}</td>
-                                        <td>{{ $m->nama_asisten}}</td>
-                                        <td>Nilai</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

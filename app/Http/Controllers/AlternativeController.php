@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternative;
-use App\Models\AlternativeScore;
 use App\Models\CriteriaWeight;
-use App\Models\CriteriaRating;
+use App\Models\Matakuliah;
 use App\Models\Mengajar;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AlternativeController extends Controller
 {
@@ -19,149 +15,101 @@ class AlternativeController extends Controller
      */
     public function index()
     {
-        $scores = AlternativeScore::select(
-            'alternativescores.id as id',
-            'alternatives.id as ida',
-            //            'criteriaweights.id as idw',
-            'criteriaratings.id as idr',
-            'alternatives.name as name',
-            //            'criteriaweights.name as criteria',
-            'criteriaratings.rating as rating',
-            'criteriaratings.description as description'
-        )
-            ->leftJoin('alternatives', 'alternatives.id', '=', 'alternativescores.alternative_id')
-            //        ->leftJoin('criteriaweights', 'criteriaweights.id', '=', 'alternativescores.criteria_id')
-            ->leftJoin('criteriaratings', 'criteriaratings.id', '=', 'alternativescores.rating_id')
+        $matakuliahs = Matakuliah::with(['prodi'])->get();
+        // dd($matakuliahs);
+
+        // return response()->json($matakuliahs);
+        return view('alternative.index', compact('matakuliahs'));
+    }
+
+    public function show($matakuliahId)
+    {
+        $matakuliah_id = $matakuliahId;
+        $matakuliah = Matakuliah::findOrFail($matakuliah_id);
+        $criterias = CriteriaWeight::with('subcriteria')->get()->keyBy('id');
+        $mengajars = Mengajar
+            ::where('matakuliah_id', $matakuliah_id)
+            ->with([
+                'asistensi',
+                'asistensi.asisten',
+                'asistensi.alternative_scores',
+                'asistensi.alternative_scores.rating',
+                'asistensi.alternative_scores.subcriteria'
+            ])
             ->get();
 
-        $alternatives = Alternative::get();
+        $asistens = [];
+        $scores = [];
 
-        $mengajar = DB::table('mengajar')
-            ->leftJoin('dosen', 'dosen.id', '=', 'mengajar.dosen_id')
-            ->leftJoin('matakuliah', 'matakuliah.id', '=', 'mengajar.matakuliah_id')
-            ->leftJoin('asisten_matakuliah', 'asisten_matakuliah.mengajar_id', '=', 'mengajar.id')
-            ->leftJoin('asisten', 'asisten.id', '=', 'asisten_matakuliah.asisten_id')->get();
+        // Preprocess data from database
+        foreach ($mengajars as $mengajar) {
+            $asistensis = $mengajar->asistensi;
 
-        // $mengajarCol = Mengajar::where('dosen_id', 4)->with(['matakuliah', 'asisten'])->get();
-        // foreach ($mengajarCol as $mengajar) {
-        //     /** @var \App\Models\Mengajar $item */
-        //     dump($mengajar->matakuliah->nama_matakuliah);
+            foreach ($asistensis as $asistensi) {
+                $asistens[$asistensi->asisten_id] = $asistensi->asisten;
 
-        //     foreach ($mengajar->asisten as $asisten) {
-        //         dump($asisten->nama_asisten);
-        //     }
-        // }
-
-
-        // foreach ($mengajar as $m) {
-        //     dump($m->matakuliah->nama_matakuliah)
-        // }
-
-        $criteriaweights = CriteriaWeight::get();
-        return view('alternative.index', compact('scores', 'alternatives', 'criteriaweights', 'mengajar'))->with('i', 0);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $criteriaweights = CriteriaWeight::get();
-        $criteriaratings = CriteriaRating::get();
-        return view('alternative.create', compact('criteriaweights', 'criteriaratings'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required'
-        ]);
-
-        // Save the alternative
-        $alt = new Alternative;
-        $alt->name = $request->name;
-        $alt->save();
-
-        // Save the score
-        $criteriaweight = CriteriaWeight::get();
-        foreach ($criteriaweight as $cw) {
-            $score = new AlternativeScore();
-            $score->alternative_id = $alt->id;
-//            $score->criteria_id = $cw->id;
-            $score->rating_id = $request->input('criteria')[$cw->id];
-            $score->save();
+                foreach ($asistensi->alternative_scores as $alternative_score) {
+                    $scores[$asistensi->asisten_id][$alternative_score->subcriteria->criteria_id][$alternative_score->subcriteria_id][] = $alternative_score->rating->rating;
+                }
+            }
         }
 
-        return redirect()->route('alternatives.index')
-            ->with('success', 'Alternative created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Alternative  $alternative
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alternative $alternative)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Alternative  $alternative
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Alternative $alternative)
-    {
-        $criteriaweights = CriteriaWeight::get();
-        $criteriaratings = CriteriaRating::get();
-        $alternativescores = AlternativeScore::where('alternative_id', $alternative->id)->get();
-        return view('alternative.edit', compact('alternative', 'alternativescores', 'criteriaweights', 'criteriaratings'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Alternative  $alternative
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Alternative $alternative)
-    {
-        // Save the score
-        $scores = AlternativeScore::where('alternative_id', $alternative->id)->get();
-        $criteriaweight = CriteriaWeight::get();
-        foreach ($criteriaweight as $key => $cw) {
-            $scores[$key]->rating_id = $request->input('criteria')[$cw->id];
-            $scores[$key]->save();
+        // Step 1
+        foreach ($scores as &$asisten_scores) {
+            foreach ($asisten_scores as &$criteria_scores) {
+                foreach ($criteria_scores as &$subcriteria_scores) {
+                    $subcriteria_scores = array_sum($subcriteria_scores) / count($subcriteria_scores);
+                }
+            }
         }
+        $step1 = $scores;
+        unset($asisten_scores, $criteria_scores, $subcriteria_scores);
 
-        return redirect()->route('alternatives.index')
-            ->with('success', 'Alternative updated successfully');
-    }
+        // Step 2
+        foreach ($scores as &$asisten_scores) {
+            foreach ($asisten_scores as &$criteria_score) {
+                $criteria_score = array_sum($criteria_score);
+            }
+        }
+        $step2 = $scores;
+        unset($asisten_scores, $criteria_score);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Alternative  $alternative
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Alternative $alternative)
-    {
-        $scores = AlternativeScore::where('alternative_id', $alternative->id)->delete();
-        $alternative->delete();
+        // Step 3
+        foreach ($scores as &$asisten_scores) {
+            foreach ($asisten_scores as $id => &$criteria_score) {
+                $criteria = $criterias[$id];
 
-        return redirect()->route('alternatives.index')
-            ->with('success', 'Alternative deleted successfully');
+                if ($criteria->type === 'benefit') {
+                    $criteria_score /= collect($scores)->max($id);
+                } else if ($criteria->type === 'cost') {
+                    $criteria_score = collect($scores)->min($id) / $criteria_score;
+                }
+            }
+        }
+        $step3 = $scores;
+        unset($asisten_scores, $criteria_score);
+
+        // Step 4
+        foreach ($scores as &$asisten_scores) {
+            foreach ($asisten_scores as $id => &$criteria_score) {
+                $criteria = $criterias[$id];
+                $criteria_score *= $criteria->weight;
+            }
+        }
+        $step4 = $scores;
+        unset($asisten_scores, $criteria_score);
+
+        // Step 5
+        foreach ($scores as &$asisten_scores) {
+            $asisten_scores = array_sum($asisten_scores);
+        }
+        arsort($scores);
+        $step5 = $scores;
+        unset($asisten_scores);
+
+        return view(
+            'alternative.show',
+            compact('matakuliah', 'criterias', 'asistens', 'step1', 'step2', 'step3', 'step4', 'step5')
+        );
     }
 }

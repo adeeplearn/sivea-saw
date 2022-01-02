@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('alternatives')->group(function () {
         Route::get('/', [AlternativeController::class, 'index']);
-        Route::get('/{matakuliahId}', [AlternativeController::class, 'index']);
+        Route::get('/{matakuliahId}', [AlternativeController::class, 'show'])->name('alternatives.show');
     });
 
     Route::prefix('polling')->name('polling.')->group(function () {
