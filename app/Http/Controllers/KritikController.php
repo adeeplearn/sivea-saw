@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kritik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KritikController extends Controller
 {
@@ -14,7 +15,8 @@ class KritikController extends Controller
      */
     public function index()
     {
-        return view('kritik.isi');
+        $has_kritik = Kritik::where('dosen_id', Auth::user()->dosen_id)->exists();
+        return view('kritik.isi', compact('has_kritik'));
     }
 
     /**

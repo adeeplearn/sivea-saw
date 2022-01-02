@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::prefix('polling')->name('polling.')->group(function () {
-        Route::get('/', [PollingController::class, 'index']);
+        Route::get('/', [PollingController::class, 'index'])->name('index');
         Route::get('listasisten/{mengajarId}', [PollingController::class, 'listasisten'])->name('asisten');
         Route::get('isi/{asistensiId}', [PollingController::class, 'isi'])->name('isi');
         Route::post('isi/{asistensiId}', [PollingController::class, 'store'])->name('store');

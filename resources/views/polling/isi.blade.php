@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title">Asisten Yang Dinilai</h2><br>
-                            {{--{{route('polling.store')}}--}}
+
                             <form class="forms-sample" method="POST" action="{{ route('polling.store', ['asistensiId' => $asistensi->id]) }}">
                                 @csrf
                                 <div class="form-group row">

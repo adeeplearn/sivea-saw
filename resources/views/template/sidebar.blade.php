@@ -102,6 +102,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{url('data')}}" class="nav-link">
+            <i class="nav-icon fas fa-file-import"></i>
+            <p>
+              Users Import
+            </p>
+          </a>
+        </li>
         @endif
         @if(Auth::user()->role == 'penilai')
         <li class="nav-item">

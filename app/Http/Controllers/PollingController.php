@@ -14,7 +14,12 @@ class PollingController extends Controller
     public function index()
     {
         $dosen = Auth::user();
-        $mengajars = Mengajar::where('dosen_id', $dosen->dosen_id)->with('matakuliah')->get();
+        $matakuliahs = [];
+        $mengajars = Mengajar
+            ::where('dosen_id', $dosen->dosen_id)
+            ->with(['matakuliah'])
+            ->doesntHave('asistensi.alternative_scores')
+            ->get();
 
         return view('polling.index', compact('mengajars'));
     }
@@ -34,7 +39,7 @@ class PollingController extends Controller
             }
         }
 
-        return view('polling.list', compact('matakuliah', 'asistensis', 'done_all'))->with('i', 0);
+        return view('polling.list', compact('matakuliah', 'asistensis', 'done_all'));
     }
 
     public function isi($asistensiId)

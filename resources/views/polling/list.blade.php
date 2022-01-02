@@ -46,7 +46,7 @@
                                     Jika Status sudah
                                     <button type="button" class="btn btn-info"><i class="fa fa-check-circle"></i></button> klik tombol selesai
                                     <br /><br />
-                                    <form class="forms-sample" method="POST" action="#">
+                                    <form class="forms-sample" method="GET" action="{{ route('polling.index') }}">
                                         <input type="hidden" name="evaluasi" value="angketakhir" readonly>
                                         <input type="submit" class="btn btn-success mr-2" value="Klik Selesai disini" @if(!$done_all) disabled @endif>
                                     </form>
@@ -78,7 +78,7 @@
                                                 </a>
                                                 @endif
                                             </td>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $loop->iteration}}</td>
                                             <td>{{ $matakuliah->nama_matakuliah }}</td>
                                             <td>{{ $asistensi->asisten->npm }}</td>
                                             <td>{{ $asistensi->asisten->nama_asisten }}</td>
