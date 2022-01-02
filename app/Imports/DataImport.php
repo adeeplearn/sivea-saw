@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Asisten;
+use App\Models\Asistensi;
 use App\Models\Dosen;
 use App\Models\Matakuliah;
 use App\Models\Mengajar;
@@ -23,10 +24,10 @@ class DataImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            $this->firstOrCreateMengajar(
+            $this->createAsistensi($this->firstOrCreateMengajar(
                 $this->firstOrCreateDosen($row['nik_dosen'], $row['nama_dosen']),
                 $this->firstOrCreateMatakuliah($row['kode_matakuliah'], $row['nama_matakuliah'])
-            )->asisten()->save($this->firstOrCreateAsisten($row['npm_asisten'], $row['nama_asisten']));
+            ), $this->firstOrCreateAsisten($row['npm_asisten'], $row['nama_asisten']));
         }
     }
 
@@ -72,5 +73,13 @@ class DataImport implements ToCollection, WithHeadingRow
         }
 
         return $this->asisten[$npm];
+    }
+
+    private function createAsistensi(Mengajar $mengajar, Asisten $asisten)
+    {
+        return Asistensi::create([
+            'mengajar_id' => $mengajar->id,
+            'asisten_id' => $asisten->id
+        ]);
     }
 }
