@@ -27,6 +27,10 @@ use App\Http\Controllers\RankController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 Route::prefix('auth')->group(function () {
     Route::get('login', [AuthController::class, 'index'])->name('login');
     Route::post('login', [AuthController::class, 'login']);
@@ -37,7 +41,7 @@ Route::prefix('auth')->group(function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resources([
-        'alternatives' => AlternativeController::class,
+        // 'alternatives' => AlternativeController::class,
         'prodis' => ProdiController::class,
         'matakuliahs' => MatakuliahController::class,
         'criteriaratings' => CriteriaRatingController::class,
@@ -45,14 +49,20 @@ Route::group(['middleware' => 'auth'], function () {
         'subcriterias' => SubCriteriaController::class
     ]);
 
-    Route::prefix('kritik')->group(function(){
+    Route::prefix('kritik')->group(function () {
         Route::get('isi', [\App\Http\Controllers\KritikController::class, 'index'])->name('kritik.isi');
     });
 
-    Route::prefix('polling')->group(function(){
+    Route::prefix('alternatives')->group(function () {
+        Route::get('/', [AlternativeController::class, 'index']);
+        Route::get('/{matakuliahId}', [AlternativeController::class, 'index']);
+    });
+
+    Route::prefix('polling')->name('polling.')->group(function () {
         Route::get('/', [PollingController::class, 'index']);
-        Route::get('listasisten', [PollingController::class, 'listasisten']);
-        Route::get('isi', [PollingController::class, 'isi']);
+        Route::get('listasisten/{mengajarId}', [PollingController::class, 'listasisten'])->name('asisten');
+        Route::get('isi/{asistensiId}', [PollingController::class, 'isi'])->name('isi');
+        Route::post('isi/{asistensiId}', [PollingController::class, 'store'])->name('store');
     });
 
     Route::prefix('data')->group(function () {
@@ -64,11 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('home', [HomeController::class, 'index']);
 
-    Route::get('decision', [DecisionController::class, 'index']);
+    // Route::get('decision', [DecisionController::class, 'index']);
 
-    Route::get('normalization', [NormalizationController::class, 'index']);
+    // Route::get('normalization', [NormalizationController::class, 'index']);
 
-    Route::get('rank', [RankController::class, 'index']);
-
-
+    // Route::get('rank', [RankController::class, 'index']);
 });

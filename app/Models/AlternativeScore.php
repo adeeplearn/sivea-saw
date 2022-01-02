@@ -22,8 +22,24 @@ class AlternativeScore extends Model
      * @var array
      */
     protected $fillable = [
-        'alternative_id',
-        'criteria_id',
+        'asistensi_id',
+        'subcriteria_id',
         'rating_id',
+        'pesan',
     ];
+
+    public function asistensi()
+    {
+        return $this->belongsToMany(Asistensi::class);
+    }
+
+    public function rating()
+    {
+        return $this->belongsTo(CriteriaRating::class);
+    }
+
+    public function subcriteria()
+    {
+        return $this->belongsTo(SubCriteria::class);
+    }
 }

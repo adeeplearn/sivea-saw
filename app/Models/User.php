@@ -27,4 +27,9 @@ class User extends Model implements Authenticatable
         'email',
         'password',
     ];
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
+    }
 }

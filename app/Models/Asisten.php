@@ -13,12 +13,8 @@ class Asisten extends Model
     protected $table = 'asisten';
     protected $fillable = ['npm', 'nama_asisten', 'phone'];
 
-    // public function asisten_matakuliah(){
-    //     return $this->belongsTo(AsistenMatakuliah::class);
-    // }
-
-    public function mengajar()
+    public function asistensi()
     {
-        return $this->belongsToMany(Mengajar::class);
+        return $this->hasMany(Asistensi::class);
     }
 }

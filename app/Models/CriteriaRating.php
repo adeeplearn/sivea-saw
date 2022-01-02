@@ -27,7 +27,13 @@ class CriteriaRating extends Model
         'description',
     ];
 
-    public function criteria(){
+    public function criteria()
+    {
         return $this->belongsTo(CriteriaWeight::class, 'criteria_id');
+    }
+
+    public function alternative_scores()
+    {
+        return $this->hasOne(AlternativeScore::class);
     }
 }

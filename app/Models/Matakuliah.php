@@ -20,6 +20,6 @@ class Matakuliah extends Model
 
     public function mengajar()
     {
-        return $this->hasMany(Mengajar::class, 'asisten_matakuliah');
+        return $this->hasMany(Mengajar::class);
     }
 }

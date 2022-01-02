@@ -22,4 +22,9 @@ class Dosen extends Model
     {
         return $this->hasMany(Mengajar::class);
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

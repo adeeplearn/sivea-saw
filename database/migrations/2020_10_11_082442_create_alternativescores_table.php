@@ -15,8 +15,10 @@ class CreateAlternativescoresTable extends Migration
     {
         Schema::create('alternativescores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('alternative_id');
-            $table->foreign('alternative_id')->references('id')->on('alternatives');
+            $table->unsignedBigInteger('asistensi_id');
+            $table->foreign('asistensi_id')->references('id')->on('asistensis');
+            $table->unsignedBigInteger('subcriteria_id');
+            $table->foreign('subcriteria_id')->references('id')->on('subcriterias');
             $table->unsignedBigInteger('rating_id');
             $table->foreign('rating_id')->references('id')->on('criteriaratings');
             $table->text('pesan');

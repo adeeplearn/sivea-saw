@@ -22,13 +22,8 @@ class Mengajar extends Model
         return $this->belongsTo(Matakuliah::class);
     }
 
-    // public function asisten_matakuliah()
-    // {
-    //     return $this->belongsTo(AsistenMatakuliah::class);
-    // }
-
-    public function asisten()
+    public function asistensi()
     {
-        return $this->belongsToMany(Asisten::class, 'asisten_matakuliah');
+        return $this->hasMany(Asistensi::class);
     }
 }

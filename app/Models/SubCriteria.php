@@ -16,4 +16,9 @@ class SubCriteria extends Model
     {
         return $this->belongsTo(CriteriaWeight::class);
     }
+
+    public function alternative_scores()
+    {
+        return $this->hasMany(AlternativeScore::class);
+    }
 }
