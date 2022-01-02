@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class DataImport implements ToCollection, WithHeadingRow
+class MengajarImport implements ToCollection, WithHeadingRow
 {
     private $dosen = [];
     private $matakuliah = [];

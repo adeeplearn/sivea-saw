@@ -37,7 +37,15 @@ class KritikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kritik = $request->validate([
+            'pesan' => 'required|min:3|max:255',
+        ]);
+
+        $kritik['dosen_id'] = Auth::user()->dosen_id;
+
+        Kritik::create($kritik);
+
+        return redirect()->route('kritik.index');
     }
 
     /**

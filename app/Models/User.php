@@ -24,8 +24,10 @@ class User extends Model implements Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email',
+        'username',
         'password',
+        'role',
+        'dosen_id'
     ];
 
     public function dosen()

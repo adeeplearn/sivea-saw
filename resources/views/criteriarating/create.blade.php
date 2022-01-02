@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Add new criteria</h1>
+                    <h1 class="m-0">Add new Criteria Rating</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                 </div><!-- /.col -->
@@ -40,22 +40,20 @@
                                     <label for="criteria">Criteria :</label>
                                     <select class="form-control" id="criteria" name="criteria_id">
                                         @foreach ($criteriaweight as $c)
-                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                        <option value="{{ $c->id }}">{{ $c->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="rating">Rating :</label>
                                     <div class="input-group">
-                                        <input id="rating" type="text" class="form-control" placeholder="e.g. 1.0"
-                                            name="rating" required>
+                                        <input id="rating" type="text" class="form-control" placeholder="e.g. 1.0" name="rating" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description :</label>
                                     <div class="input-group">
-                                        <input id="description" type="text" class="form-control" placeholder="e.g. Good"
-                                            name="description" required>
+                                        <input id="description" type="text" class="form-control" placeholder="e.g. Good" name="description" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -74,4 +72,3 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
-

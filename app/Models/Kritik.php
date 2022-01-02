@@ -9,11 +9,12 @@ class Kritik extends Model
 {
     use HasFactory;
 
-    protected $table='kritik';
+    protected $table = 'kritik';
 
-    protected $fillable = ['pesan'];
+    protected $fillable = ['dosen_id', 'pesan'];
 
-    public function dosen(){
+    public function dosen()
+    {
         return $this->belongsTo(Dosen::class);
     }
 }

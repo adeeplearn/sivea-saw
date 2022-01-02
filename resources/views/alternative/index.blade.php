@@ -42,7 +42,7 @@
                                         <td>{{ $matkul->nama_matakuliah}}</td>
                                         <td>
                                             <span data-toggle="tooltip" data-placement="bottom" title="Lihat Data">
-                                                <a href="{{ route('alternatives.show',$matkul->id) }}" class="btn btn-primary"><span class="fa fa-eye"></span>
+                                                <a href="{{ route('alternatives.show',$matkul->id) }}" class="btn btn-success"><span class="fa fa-chart-line"></span>
                                                 </a>
                                             </span>
                                         </td>

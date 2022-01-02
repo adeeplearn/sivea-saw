@@ -39,8 +39,7 @@
                                 <div class="form-group">
                                     <label for="name">Name :</label>
                                     <div class="input-group">
-                                        <input id="name" type="text" class="form-control" placeholder="e.g. Speed"
-                                            name="name" required>
+                                        <input id="name" type="text" class="form-control" placeholder="e.g. Speed" name="name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -53,15 +52,13 @@
                                 <div class="form-group">
                                     <label for="weight">Weight :</label>
                                     <div class="input-group">
-                                        <input id="weight" type="text" class="form-control" placeholder="e.g. 2.5"
-                                            name="weight" required>
+                                        <input id="weight" type="text" class="form-control" placeholder="e.g. 2.5" name="weight" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description :</label>
                                     <div class="input-group">
-                                        <input id="description" type="text" class="form-control" placeholder="e.g. Good"
-                                            name="description" required>
+                                        <input id="description" type="text" class="form-control" placeholder="e.g. Good" name="description" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -80,4 +77,3 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
-

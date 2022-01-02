@@ -21,10 +21,32 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('data.import')}}" enctype="multipart/form-data" method="POST">
+                            <h3 class="card-title">Import Asistensi</h3>
+                            <br />
+                            <form action="{{route('import.mengajar')}}" enctype="multipart/form-data" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="file">Berkas :</label>
+                                    <div class="input-group">
+                                        <input id="file" type="file" class="form-control" name="file" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col-md-6 -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Import Dosen</h3>
+                            <br />
+                            <form action="{{route('import.dosen')}}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="file">Berkas :</label>

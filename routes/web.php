@@ -10,9 +10,9 @@ use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CriteriaRatingController;
 use App\Http\Controllers\CriteriaWeightController;
-use App\Http\Controllers\DataContoller;
 use App\Http\Controllers\DecisionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImportContoller;
 use App\Http\Controllers\NormalizationController;
 use App\Http\Controllers\RankController;
 
@@ -49,8 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
         'subcriterias' => SubCriteriaController::class
     ]);
 
-    Route::prefix('kritik')->group(function () {
-        Route::get('isi', [\App\Http\Controllers\KritikController::class, 'index'])->name('kritik.isi');
+    Route::prefix('kritik')->name('kritik.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\KritikController::class, 'index'])->name('index');
+        Route::post('isi', [\App\Http\Controllers\KritikController::class, 'store'])->name('store');
     });
 
     Route::prefix('alternatives')->group(function () {
@@ -65,9 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('isi/{asistensiId}', [PollingController::class, 'store'])->name('store');
     });
 
-    Route::prefix('data')->group(function () {
-        Route::get('/', [DataContoller::class, 'index'])->name('data.index');
-        Route::post('import', [DataContoller::class, 'import'])->name('data.import');
+    Route::prefix('import')->name('import.')->group(function () {
+        Route::get('/', [ImportContoller::class, 'index'])->name('index');
+        Route::post('mengajar', [ImportContoller::class, 'mengajar'])->name('mengajar');
+        Route::post('dosen', [ImportContoller::class, 'dosen'])->name('dosen');
     });
 
     Route::get('dashboard', [DashboardController::class, 'index']);

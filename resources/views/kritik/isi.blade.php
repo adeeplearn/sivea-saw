@@ -20,7 +20,8 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3>Terimakasih telah memberikan kritik dan saran untuk Forum Asisten.</h3>
+                            <h3>Terimakasih telah memberikan kritik dan saran untuk Forum Asisten</h3>
+                            <p class="card-text">Semoga kritik serta saran yang telah diberikan dapat menjadi evaluasi untuk Forum Asisten untuk memperbaiki kekurangan</h3>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -52,7 +53,26 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                            <form action="{{route('kritik.store')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="pesan">Kritik dan Saran :</label>
+                                    <div class="input-group">
+                                        <textarea id="pesan" class="form-control" placeholder="Masukkan pesan anda" name="pesan"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
                     <!-- /.card -->

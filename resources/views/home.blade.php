@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-{{--                    <h1 class="m-0">Home</h1>--}}
+                    <h1 class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -24,11 +24,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Selamat Datang di SIVEA Forum Asisten Universitas Amikom Yogyakarta</h3>
-                            </div>
-                        </div>
+                        <h3 class="card-title p-4"> Selamat Datang di SIVEA Forum Asisten Universitas Amikom Yogyakarta</h3>
                         <div class="card-body">
                             <div class="alert alert-info">
                                 <strong>Apakah SIVEA ? </strong> <br>
@@ -50,20 +46,18 @@
                                     Dengan mengisi SIVEA berarti Bapak dan Ibu Dosen telah berpartisipasi untuk membantu meningkatkan mutu asistensi.
                                     SIVEA bermanfaat bagi asisten untuk memperbaiki diri bila memang masih terdapat kekurangan serta mengembangkan potensi dan kelebihan yang dimilikinya.
                                 </p>
-                            <div>
+                                <div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- /.row -->
                     </div>
-                    <!-- /.card -->
-
+                    <!-- /.container-fluid -->
                 </div>
-                <!-- /.col-md-6 -->
-
+                <!-- /.content -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
     </div>
-    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @endsection
