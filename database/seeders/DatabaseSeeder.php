@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CriteriaRating;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         return $this->call([
+            UserSeeder::class,
             ProdiSeeder::class,
             MatakuliahSeeder::class,
-            DosenSeeder::class,
+            // DosenSeeder::class,
             AsistenSeeder::class,
             CriteriaWeightSeeder::class,
             SubCriteriaSeeder::class,

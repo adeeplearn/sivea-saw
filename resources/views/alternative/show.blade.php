@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Calculate Alternatives Score</h1>
+          <h1 class="m-0">Hasil Nilai Alternatif</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
 
@@ -28,11 +28,11 @@
               <h3>{{ $matakuliah->nama_matakuliah }}</h3>
               <nav>
                 <div class="nav nav-tabs" role="tablist">
-                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-step1" role="tab">Langkah 1</a>
-                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-step2" role="tab">Langkah 2</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step3" role="tab">Langkah 3</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step4" role="tab">Langkah 4</a>
-                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step5" role="tab">Langkah 5</a>
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-step1" role="tab">Perhitungan Rating Kriteria</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-step2" role="tab">Matriks Keputusan</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step3" role="tab">Matriks Ternormalisasi</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step4" role="tab">Matriks Ternormalisasi Terbobot</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-step5" role="tab">Perangkingan</a>
                 </div>
               </nav>
               <br />
@@ -62,7 +62,7 @@
                         <td>{{ $asisten->nama_asisten }}</td>
                         @foreach ($criterias as $criteria)
                         @foreach ($criteria->subcriteria as $subcriteria)
-                        <td>{{ $step1[$asisten->id][$criteria->id][$subcriteria->id] }}</td>
+                        <td>{{ round($step1[$asisten->id][$criteria->id][$subcriteria->id],3) }}</td>
                         @endforeach
                         @endforeach
                       </tr>
@@ -87,7 +87,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $asisten->nama_asisten }}</td>
                         @foreach ($criterias as $criteria)
-                        <td>{{ $step2[$asisten->id][$criteria->id] }}</td>
+                        <td>{{ round($step2[$asisten->id][$criteria->id],3) }}</td>
                         @endforeach
                       </tr>
                       @endforeach
@@ -95,7 +95,7 @@
                   </table>
                 </div>
                 <div class="tab-pane fade" id="nav-step3" role="tabpanel">
-                  <table id="mytable" class="display nowrap table table-striped table-bordered">
+                  <table id="mytable" class="display nowrap table table-responsive-md table-striped table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -111,7 +111,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $asisten->nama_asisten }}</td>
                         @foreach ($criterias as $criteria)
-                        <td>{{ round($step3[$asisten->id][$criteria->id], 3) }}</td>
+                        <td>{{ $step3[$asisten->id][$criteria->id]}}</td>
                         @endforeach
                       </tr>
                       @endforeach
@@ -143,11 +143,11 @@
                   </table>
                 </div>
                 <div class="tab-pane fade" id="nav-step5" role="tabpanel">
-                  <table id="mytable" class="display nowrap table table-striped table-bordered">
+                  <table style="width: 50%" id="mytable" class="display nowrap table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Name</th>
+                        <th style="width: 10px">Ranking</th>
+                        <th>Alternatif</th>
                         <th>Nilai Preferensi</th>
                       </tr>
                     </thead>

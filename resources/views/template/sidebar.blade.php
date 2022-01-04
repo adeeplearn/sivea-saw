@@ -11,14 +11,14 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="{{asset('assets/img/amongus.webp')}}" style="height: 50px; width: 50px;" class="img-circle elevation-2" alt="User Image">
+        <img src="{{asset('assets/img/cc.png')}}" style="height: 35px; width: 35px;" class="img-circle my-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{Auth::user()->dosen->nama_dosen ?? 'Administrator'}}</a>
+        <a href="#" class="d-block text-wrap">{{Auth::user()->dosen->nama_dosen ?? 'Administrator'}}</a>
         @if(Auth::user()->role == 'admin')
         <span class="badge badge-warning">{{Auth::user()->role}}</span>
         @elseif(Auth::user()->role == 'penilai')
-        <span class="badge badge-light">{{Auth::user()->role}}</span>
+        <span class="badge badge-success">{{Auth::user()->role}}</span>
         @endif
       </div>
     </div>
@@ -28,7 +28,8 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        @if(Auth::user()->role == 'admin'))
+        @if(Auth::user()->role == 'admin')
+        <li class="nav-header">Data Master</li>
         <li class="nav-item">
           <a href="{{url('dashboard')}}" class="nav-link">
             <i class="nav-icon fas fa-tv"></i>
@@ -107,7 +108,7 @@
           <a href="{{url('alternatives')}}" class="nav-link">
             <i class="nav-icon fas fa-poll"></i>
             <p>
-              Alternative & Score
+              Hasil Polling
             </p>
           </a>
         </li>

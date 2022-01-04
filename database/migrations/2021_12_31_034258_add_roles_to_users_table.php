@@ -18,7 +18,7 @@ class AddRolesToUsersTable extends Migration
 //            $table->foreign('dosen_id')->references('id')->on('dosen');
 //            $table->string('email')->unique()->after('username');
             $table->foreignId('dosen_id')
-                ->nullable()
+                ->nullable()->after('password')
                 ->constrained('dosen')
                 ->cascadeOnDelete();
             $table->enum('role', ['admin', 'penilai'])->after('password');

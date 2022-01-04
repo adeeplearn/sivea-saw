@@ -10,8 +10,8 @@ class Dosen extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen';
-    protected $fillable = ['nik', 'nama_dosen', 'jk', 'email', 'phone'];
+    protected $table = 'dosen'; 
+    protected $fillable = ['nik', 'nama_dosen', 'email', 'phone'];
 
     public function kritik()
     {
