@@ -16,12 +16,15 @@ class AlternativeController extends Controller
     public function index()
     {
         $matakuliahs = Matakuliah::with(['prodi'])->get();
-        // dd($matakuliahs);
-
-        // return response()->json($matakuliahs);
         return view('alternative.index', compact('matakuliahs'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function show($matakuliahId)
     {
         $matakuliah_id = $matakuliahId;
@@ -54,7 +57,7 @@ class AlternativeController extends Controller
             }
         }
 
-        // Step 1
+        // Hitung rata-rata nilai polling tiap subcriteria
         foreach ($scores as &$asisten_scores) {
             foreach ($asisten_scores as &$criteria_scores) {
                 foreach ($criteria_scores as &$subcriteria_scores) {
@@ -80,7 +83,7 @@ class AlternativeController extends Controller
                 $criteria = $criterias[$id];
 
                 if ($criteria->type === 'benefit') {
-                    $criteria_score /= collect($scores)->max($id);
+                    $criteria_score = $criteria_score / collect($scores)->max($id);
                 } else if ($criteria->type === 'cost') {
                     $criteria_score = collect($scores)->min($id) / $criteria_score;
                 }

@@ -18,22 +18,22 @@ class DosenImport implements ToCollection, WithHeadingRow
     {
         foreach ($rows as $row) {
             $this->createUser(
-                $this->firstOrCreateDosen($row['nik'], $row['nama']),
-                $row['email'],
+                $this->firstOrCreateDosen($row['nik'], $row['nama'], $row['email']),
+                $row['username'],
                 $row['password']
             );
         }
     }
 
-    private function firstOrCreateDosen($nik, $nama)
+    private function firstOrCreateDosen($nik, $nama, $email)
     {
-        return $this->dosen[$nik] = Dosen::firstOrCreate(['nik' => $nik], ['nama_dosen' => $nama]);
+        return $this->dosen[$nik] = Dosen::firstOrCreate(['nik' => $nik], ['nama_dosen' => $nama], ['email' => $email]);
     }
 
-    private function createUser(Dosen $dosen, $email, $password)
+    private function createUser(Dosen $dosen, $username, $password)
     {
-        return User::create([
-            'username' => $email,
+        return User::firstOrCreate([
+            'username' => $username,
             'password' => Hash::make($password),
             'dosen_id' => $dosen->id,
             'role' => 'penilai',
